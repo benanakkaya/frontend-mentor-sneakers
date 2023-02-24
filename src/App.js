@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Album from "./components/Album";
+import Content from "./components/Content";
+import Navbar from "./components/Navbar";
+
 
 function App() {
+
+  const [card, setCard] = useState([]);
+  const [cardVisible, setCardVisible] = useState(false);
+  const [mobileMenuVisible, setMobileMenuVisible] = useState(false);
+
+  const [albumImage, setAlbumImage] = useState("1");
+  const [albumVisible, setAlbumVisible] = useState(false);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-white font-kumbh text-default">
+
+      <Navbar mobileMenuVisible={mobileMenuVisible} setMobileMenuVisible={setMobileMenuVisible} card={card} setCard={setCard} cardVisible={cardVisible} setCardVisible={setCardVisible} />
+      <Content setAlbumImage={setAlbumImage} card={card} setCard={setCard} setAlbumVisible={setAlbumVisible} />
+      <Album albumVisible={albumVisible} setAlbumVisible={setAlbumVisible} setAlbumImage={setAlbumImage} albumImage={albumImage} />
     </div>
   );
 }
